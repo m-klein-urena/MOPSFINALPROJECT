@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">MOPS</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="bookID_text">Book ID</string>
+
+    <string name="checkoutDate_text">Checkout Date</string>
+    <string name="checkOut_btn">Check Out Book</string>
+    <string name="checkOut_title">Checkout &amp; Return</string>
+
+    <string name="goback">Back to Main Page</string>
+    <string name="goCheckOut_btn">Check Out</string>
+    <string name="newUser">Do Query</string>
+
+    <string name="hint">Select</string>
+    <string name="home_instruction">Log in or sign up below.</string>
+    <string name="home_login">Log in</string>
+    <string name="home_username">Username:</string>
+    <string name="home_newUser">I\'m a new user.</string>
+    <string name="home_NewToApp">New User? No Problem.</string>
+    <string name="home_welcome">Welcome to the MOPS App</string>
+
+    <string name="query_prompt">Choose a query</string>
+
+    <string name="return_btn">Return</string>
+
+    <string name="showresult">Show Result</string>
+    <string name="showresult_btn">Show Result</string>
+    <string name="studentID_text">Student ID</string>
+    <string name="summary_btn">Summary</string>
+
+    <string name="title_query">Query</string>
+
+    <string name="welcome">Welcome to the MOPS App</string>
+
+</resources>
