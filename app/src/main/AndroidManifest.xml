@@ -25,14 +25,15 @@
             </intent-filter>
         </activity>
 
+
         <activity
-            android:name=".QueryActivity"
+            android:name=".RegisterActivity01"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".CheckoutActivity"
+            android:name=".RegisterActivity02"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

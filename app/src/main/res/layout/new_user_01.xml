@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_main"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/stdMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/textHeader"
+                android:gravity="center"
+                android:text="@string/newUserHeader"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <EditText
+                android:id="@+id/newUserFirst"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptFirst"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newUserLast"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptLast"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newUserPreferred"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptPreferred"
+                android:background="@drawable/textbox"/>
+
+            <Spinner
+                android:id="@+id/newUserPronouns"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <EditText
+                android:id="@+id/newUserAddress1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptAddress1"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newUserAddress2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptAddress2"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newUserCity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptCity"
+                android:background="@drawable/textbox"/>
+
+            <Spinner
+                android:id="@+id/newUserState"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newUserZIP"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptZIP"
+                android:background="@drawable/textbox"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <EditText
+                android:id="@+id/newUserPhone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptPhone"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newUserEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptEmail"
+                android:background="@drawable/textbox"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <Button
+                android:id="@+id/btnRegister01Next"
+                android:layout_width="@dimen/btnWidth"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/btnStandard"
+                android:background="@drawable/button"
+                android:text="@string/btnNext"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

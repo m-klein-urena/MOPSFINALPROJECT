@@ -1,3 +1,30 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="btnHeight">42dp</dimen>
+    <dimen name="btnRadius">30dp</dimen>
+    <dimen name="btnStrokeSelected">2.3dp</dimen>
+    <dimen name="btnStrokeUnselected">0.2dp</dimen>
+    <dimen name="btnWidth">144dp</dimen>
+    <dimen name="btnWidthAdd">144dp</dimen>
+
+    <dimen name="headerMarginVertical">15dp</dimen>
+
+    <dimen name="stdMarginVertical">10dp</dimen>
+
+    <dimen name="screenPaddingHorizontal">10dp</dimen>
+    <dimen name="screenPaddingVertical">10dp</dimen>
+
+    <dimen name="stdPaddingHorizontal">5dp</dimen>
+    <dimen name="stdPaddingVertical">5dp</dimen>
+
+    <dimen name="textboxCornerRadius">10dp</dimen>
+    <dimen name="textboxHeight">40dp</dimen>
+    <dimen name="textboxPaddingHorizontal">30dp</dimen>
+    <dimen name="textboxMarginHorizontal">30dp</dimen>
+
+    <dimen name="stdWidthFormText">120dp</dimen>
+    <dimen name="stdWidthFormField">300dp</dimen>
+
+
 </resources>

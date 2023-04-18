@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">MOPS</string>
-    <string name="action_settings">Settings</string>
 
+    <string name="btnAddSkill">Add Skill</string>
+    <string name="btnFinish">Finish</string>
+    <string name="btnNext">Next</string>
     <string name="bookID_text">Book ID</string>
 
     <string name="checkoutDate_text">Checkout Date</string>
@@ -11,6 +13,7 @@
     <string name="goback">Back to Main Page</string>
     <string name="goCheckOut_btn">Check Out</string>
     <string name="newUser">Do Query</string>
+    <string name="newUserHeader">New User</string>
 
     <string name="hint">Select</string>
     <string name="home_instruction">Log in or sign up below.</string>
@@ -18,10 +21,31 @@
     <string name="home_username">Username:</string>
     <string name="home_newUser">I\'m a new user.</string>
     <string name="home_NewToApp">New User? No Problem.</string>
-    <string name="home_welcome">Welcome to the MOPS App</string>
+    <string name="home_welcome">Welcome to the MOPS App!</string>
+
+    <string name="inptFirst">First Name</string>
+    <string name="inptLast">Last Name</string>
+    <string name="inptPreferred">Preferred Name</string>
+    <string name="inptPronouns">Select Pronouns</string>
+    <string name="inptAddress1">Address Line 1</string>
+    <string name="inptAddress2">Address Line 2 (optional)</string>
+    <string name="inptCity">City</string>
+    <string name="inptState">Selected State</string>
+    <string name="inptZIP">ZIP</string>
+    <string name="inptEmail">Email</string>
+    <string name="inptPhone">Phone</string>
+    <string name="inptSchool">Select School</string>
+    <string name="inptSkill">Select Skill</string>
+
+    <string name="menuAbout">About</string>
+    <string name="menuSettings">Settings</string>
+    <string name="menuLogout">Sign Out</string>
+    <string name="menuHome">Home</string>
 
     <string name="query_prompt">Choose a query</string>
 
+    <string name="registerSchool">School</string>
+    <string name="registerSkills">Skills</string>
     <string name="return_btn">Return</string>
 
     <string name="showresult">Show Result</string>
@@ -30,6 +54,7 @@
     <string name="summary_btn">Summary</string>
 
     <string name="title_query">Query</string>
+    <string name="strToolbarLogin">Welcome to the MOPS App</string>
 
     <string name="welcome">Welcome to the MOPS App</string>
 

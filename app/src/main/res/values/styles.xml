@@ -17,10 +17,64 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <!-- Bars and frames -->
     <style name="horizontalBar">
         <item name="android:background">@color/black</item>
         <item name="android:textSize">.5sp</item>
-        <item name="android:layout_gravity">center_horizontal</item>
     </style>
+
+    <style name="horizontalBarGray">
+        <item name="android:background">@color/grayedOut</item>
+        <item name="android:textSize">.5sp</item>
+    </style>
+
+    <!-- Text style themes -->
+    <style name="textHeader">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <style name="textInformation">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <style name="textBox" parent="@style/textFieldHint">
+
+
+    </style>
+
+    <style name="textField">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
+    <style name="textFieldHint" parent="@style/textField">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">@color/grayedOut</item>
+
+    </style>
+
+    <style name="textToolbarHeader">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <!-- Button themes -->
+    <style name="btnStandard">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:theme">@style/textInformation</item>
+        <item name="android:baselineAligned">false</item>
+
+    </style>
+
+
+
 
 </resources>
