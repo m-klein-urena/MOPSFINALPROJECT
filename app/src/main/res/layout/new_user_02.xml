@@ -94,16 +94,16 @@
                 android:theme="@style/textBox"
                 android:background="@drawable/textbox"/>
 
-            <Button
-                android:id="@+id/btnAddSkill"
-                android:layout_width="@dimen/btnWidthAdd"
-                android:layout_height="@dimen/btnHeight"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginVertical="@dimen/stdMarginVertical"
-                android:theme="@style/btnStandard"
-                android:background="@drawable/button"
-                android:drawableStart="@drawable/ic_action_name"
-                android:text="@string/btnAddSkill"/>
+<!--            <Button-->
+<!--                android:id="@+id/btnAddSkill"-->
+<!--                android:layout_width="@dimen/btnWidthAdd"-->
+<!--                android:layout_height="@dimen/btnHeight"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginVertical="@dimen/stdMarginVertical"-->
+<!--                android:theme="@style/btnStandard"-->
+<!--                android:background="@drawable/button"-->
+<!--                android:drawableStart="@drawable/ic_action_name"-->
+<!--                android:text="@string/btnAddSkill"/>-->
 
             <TextView
                 android:layout_height="wrap_content"

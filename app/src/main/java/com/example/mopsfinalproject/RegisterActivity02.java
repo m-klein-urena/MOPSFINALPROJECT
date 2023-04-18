@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,13 +50,14 @@ public class RegisterActivity02 extends Activity implements View.OnClickListener
         spinnerSkill2 = BuildSpinner(R.id.newUserSkill2, skills);
         spinnerSkill3 = BuildSpinner(R.id.newUserSkill3, skills);
 
+/*
 //        Create array of skill buttons
         Map<Integer, Spinner> arraySkills = new HashMap<Integer, Spinner>();
 
         arraySkills.put(new Integer(R.id.newUserSkill1), spinnerSkill1);
         arraySkills.put(new Integer(R.id.newUserSkill2), spinnerSkill3);
         arraySkills.put(new Integer(R.id.newUserSkill3), spinnerSkill2);
-
+*/
     }
 
     public void onClick(View v){
