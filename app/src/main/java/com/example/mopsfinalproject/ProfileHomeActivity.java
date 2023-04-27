@@ -2,14 +2,11 @@ package com.example.mopsfinalproject;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.mopsfinalproject.constant.SQLCommand;
 import com.example.mopsfinalproject.custom.DBOPS;
-import com.example.mopsfinalproject.util.DBOperator;
 
 public class ProfileHomeActivity extends Activity implements View.OnClickListener{
     TextView btnProfile;
@@ -27,7 +24,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
 
         Bundle extras = getIntent().getExtras();
         userID = extras.getString("studentID");
-        name = DBOPS.GetUserName(userID);
+        name = DBOPS.getStudentName(userID);
 
         btnProjects = (TextView) findViewById(R.id.btnProject);
         btnProjects.setOnClickListener(this);
@@ -51,7 +48,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
         int id = v.getId();
 
         if(id==R.id.btnProfile){
-            Intent intent = new Intent(this, DataActivity.class);
+            Intent intent = new Intent(this, DataProfileActivity.class);
             intent.putExtra("studentID", userID);
 
             this.startActivity(intent);

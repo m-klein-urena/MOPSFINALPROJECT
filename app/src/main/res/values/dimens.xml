@@ -16,12 +16,16 @@
     <dimen name="listWidthLabel">100dp</dimen>
     <dimen name="listWidthValue">200dp</dimen>
 
+    <dimen name="listviewWidth">100dp</dimen>
+    <dimen name="listviewHeight">200dp</dimen>
+
     <dimen name="headerMarginVertical">15dp</dimen>
 
     <dimen name="queryBoxHeight">300dp</dimen>
     <dimen name="queryBoxWidth">260dp</dimen>
 
     <dimen name="stdMarginVertical">10dp</dimen>
+    <dimen name="stdMarginHorizontal">10dp</dimen>
 
     <dimen name="screenPaddingHorizontal">10dp</dimen>
     <dimen name="screenPaddingVertical">10dp</dimen>

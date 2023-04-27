@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -11,43 +13,52 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.widget.NestedScrollView;
+
 import com.example.mopsfinalproject.constant.SQLCommand;
 import com.example.mopsfinalproject.custom.DBOPS;
 import com.example.mopsfinalproject.util.DBOperator;
 import com.example.mopsfinalproject.view.TableView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class TeamsActivity extends Activity implements View.OnClickListener {
     private ListView listView;
-    ScrollView queryResults;
     Map<String, String> studentData;
     private TextView header;
     String studentID;
-    Button btnBack, btnAddTeam;
+    Button btnBack, btnDetails;
+    NestedScrollView scrollView;
+    List<String> listTeams;
+
+    String[] arrayTeams, arrayTeamID;
+    String selectedTeamID;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teams);
+        setContentView(R.layout.activity_matches);
 
         Bundle extras = getIntent().getExtras();
         studentID = extras.getString("studentID");
         studentData = DBOPS.StudentToHashMap(studentID);
 
-        btnAddTeam = (Button) findViewById(R.id.btnAddTeam);
-        btnAddTeam.setOnClickListener(this);
+        btnDetails = (Button) findViewById(R.id.btnDetailsMatches);
+        btnDetails.setVisibility(View.INVISIBLE);
 
-        btnBack = (Button) findViewById(R.id.btnGoBackTeamView);
+        scrollView = (NestedScrollView) findViewById(R.id.scrollviewSkills);
+        scrollView.setVisibility(View.INVISIBLE);
+
+        btnBack = (Button) findViewById(R.id.btnGoBackMatchView);
         btnBack.setOnClickListener(this);
 
-        header = (TextView) findViewById(R.id.queryHeaderTeams);
+        header = (TextView) findViewById(R.id.queryHeaderMatches);
         header.setText(studentData.get("stud_first_name") + "\'s Teams");
 
-        queryResults = (ScrollView) findViewById(R.id.queryResultTeams);
-
-        getTeams(studentID);
+        initListView(studentID);
     }
 
 
@@ -55,34 +66,36 @@ public class TeamsActivity extends Activity implements View.OnClickListener {
     public void onClick(View v){
         int id=v.getId();
 
-        if (id == R.id.btnAddTeam) {
-            Toast.makeText(getBaseContext(), "Feature coming soon...", Toast.LENGTH_SHORT).show();
-        }
-
-        if (id == R.id.btnGoBackTeamView) {
+        if (id == R.id.btnGoBackMatchView) {
             this.finish();
         }
 
     }
 
-    public void getTeams(String studentID) {
-
-        listView = (ListView) findViewById(R.id.listTeams);
-        queryResults.removeAllViews();
-
-        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._00_GET_TEAMS, new String[] {studentID});
+    public void initListView(String studentID) {
+        listView = (ListView) findViewById(R.id.listMatches);
+        listTeams = new ArrayList<String>();
 
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
-                getApplicationContext(), R.layout.activity_teams, cursor,
-                new String[] { "Name"}, new int[] {
-                R.string.teamName},
-                SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
+        arrayTeams = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAMS, "_name", new String[] {studentID});
+        arrayTeamID = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAMS, "_id", new String[] {studentID});
 
-        listView.setAdapter(adapter);
+        for (String team : arrayTeams)
+            listTeams.add(team);
 
-        queryResults.addView(new TableView(this.getBaseContext(), cursor));
-        cursor.close();
+        ArrayAdapter<String> viewAdapter = new ArrayAdapter<String>(this, R.layout.layout_listview_item, listTeams);
+
+        listView.setAdapter(viewAdapter);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listView.setSelector(android.R.color.darker_gray);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedTeamID = arrayTeamID[i];
+            }
+        });
+
+
     }
 
 

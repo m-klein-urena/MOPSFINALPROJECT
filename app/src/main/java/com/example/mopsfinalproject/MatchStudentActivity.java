@@ -17,17 +17,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MatchActivity extends Activity implements View.OnClickListener {
+public class MatchStudentActivity extends Activity implements View.OnClickListener {
 
     private ListView listView;
-    Map<String, String> studentData;
+    Map<String, String> projectData;
     private TextView header;
-    private String selectedProjectID;
-    String studentID;
+    private String selectedStudentID;
+    String projectID;
     Button btnBack, btnDetails;
-    TextView viewSkills;
-    String[] arrayProjects;
-    String[] arrayProjectID;
+    TextView viewSkills, labelSkills;
+    String[] arrayStudentsFirst, arrayStudentsLast;
+    String[] arrayStudentID;
     List<String> listMatches;
 
     @Override
@@ -36,18 +36,21 @@ public class MatchActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_matches);
 
         Bundle extras = getIntent().getExtras();
-        studentID = extras.getString("studentID");
-        studentData = DBOPS.StudentToHashMap(studentID);
+        projectID = extras.getString("projectID");
+        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLCommand._00_GET_PROJECT_DATA, new String[] {projectID});
 
         btnBack = (Button) findViewById(R.id.btnGoBackMatchView);
         btnBack.setOnClickListener(this);
+
+        labelSkills = (TextView) findViewById(R.id.matchesSkillsLabel);
+        labelSkills.setText("Skills needed:");
 
         btnDetails = (Button) findViewById(R.id.btnDetailsMatches);
         btnDetails.setOnClickListener(this);
         btnDetails.setEnabled(false);
 
         header = (TextView) findViewById(R.id.queryHeaderMatches);
-        header.setText(studentData.get("stud_first_name") + "\'s Matches");
+        header.setText("Matches for " + projectData.get("proj_title"));
 
         init();
     }
@@ -61,9 +64,8 @@ public class MatchActivity extends Activity implements View.OnClickListener {
 
         if (id == R.id.btnDetailsMatches) {
             if (btnDetails.isEnabled()) {
-                Intent intent = new Intent(this, DataMatchesProjectsActivity.class);
-                String msg = studentID + "$" + selectedProjectID;
-                intent.putExtra("student_prjID", msg);
+                Intent intent = new Intent(this, DataProfileActivity.class);
+                intent.putExtra("studentID", selectedStudentID);
                 this.startActivity(intent);
             }
         }
@@ -72,12 +74,15 @@ public class MatchActivity extends Activity implements View.OnClickListener {
     public void getMatches(String studentID) {
         listView = (ListView) findViewById(R.id.listMatches);
         listMatches = new ArrayList<String>();
+        String[] args = new String[] {projectID};
 
-        arrayProjects = DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECT_MATCHES, "Name", new String[] {studentID});
-        arrayProjectID = DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECT_MATCHES, "_id", new String[] {studentID});
+        arrayStudentsFirst = DBOPS.getAttributeCol(SQLCommand._00_GET_STUDENT_MATCHES, "_first", args);
+        arrayStudentsLast = DBOPS.getAttributeCol(SQLCommand._00_GET_STUDENT_MATCHES, "_last", args);
+        arrayStudentID = DBOPS.getAttributeCol(SQLCommand._00_GET_STUDENT_MATCHES, "_id", args);
 
-        for (String prj : arrayProjects)
-            listMatches.add(prj);
+        for (int i = 0; i < arrayStudentsFirst.length; i++) {
+            listMatches.add(arrayStudentsFirst[i] + " " + arrayStudentsLast[i]);
+        }
 
         ArrayAdapter<String> projectAdapter = new ArrayAdapter<String>(this, R.layout.layout_listview_item, listMatches);
 
@@ -88,19 +93,24 @@ public class MatchActivity extends Activity implements View.OnClickListener {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 btnDetails.setEnabled(true);
-                selectedProjectID = arrayProjectID[i];
+                selectedStudentID = arrayStudentID[i];
             }
         });
     }
 
     private void init() {
-        String skills = DBOPS.ArrayToString(DBOPS.getStudentSkills(studentID));
+        String skills = DBOPS.ArrayToString(DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECT_SKILLS, "_skillname", new String[] {projectID}));
+        System.out.println("SKILLS: " + skills);
+
 
         viewSkills = (TextView) findViewById(R.id.displaySkills);
         viewSkills.setText(skills);
 
-        getMatches(studentID);
+        getMatches(projectID);
     }
+
+
+
 
 
 

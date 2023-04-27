@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.Map;
 
-public class DataActivity extends Activity implements View.OnClickListener{
+public class DataProfileActivity extends Activity implements View.OnClickListener{
     Map<String, String> studentData;
     String userID;
 
@@ -31,18 +31,22 @@ public class DataActivity extends Activity implements View.OnClickListener{
     TextView txtSkill2;
     TextView txtSkill3;
     Button btnBack;
+    TextView header;
 
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data);
+        setContentView(R.layout.activity_data_user);
 
         Bundle extras = getIntent().getExtras();
         userID = extras.getString("studentID");
 
         studentData = DBOPS.StudentToHashMap(userID);
+
+        header = (TextView) findViewById(R.id.headerUserProfile);
+        header.setText(studentData.get("stud_first_name") + " " + studentData.get("stud_last_name"));
 
         PopulateData();
 
@@ -100,10 +104,6 @@ public class DataActivity extends Activity implements View.OnClickListener{
         txtSchool.setText(schoolName);
 
         String[] skills = DBOPS.getStudentSkills(userID);
-
-        System.out.println(skills[0]);
-        System.out.println(skills[1]);
-        System.out.println(skills[2]);
 
         txtSkill1.setText(skills[0]);
         txtSkill2.setText(skills[1]);

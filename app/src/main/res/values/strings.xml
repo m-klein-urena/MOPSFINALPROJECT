@@ -5,7 +5,9 @@
     <string name="btnAddProject">Add Project</string>
     <string name="btnAddTeam">Add Team</string>
     <string name="btnBack">Go Back</string>
+    <string name="btnDetails">Details</string>
     <string name="btnFinish">Finish</string>
+    <string name="btnJoin">Join</string>
     <string name="btnNext">Next</string>
     <string name="bookID_text">Book ID</string>
 
@@ -69,8 +71,19 @@
     <string name="labelSkill2">Skill 2</string>
     <string name="labelSkill3">Skill 3</string>
 
+    <string name="labelProjectID">Project ID:</string>
+    <string name="labelProjectDesc">Description:</string>
+    <string name="labelProjectCreated">Created:</string>
+    <string name="labelProjectStart">Start Date:</string>
+    <string name="labelProjectEnd">End Date:</string>
+    <string name="labelProjectAdvisor">Advisor Email:</string>
+    <string name="labelProjectTeamMember">Current Team Members:</string>
+    <string name="labelProjectTeamName">Team:</string>
+    <string name="labelProjectSkillsNeeded">Skills Needed:</string>
+
 
     <string name="matchesName">Project</string>
+    <string name="matchesSkills">Your Skills:</string>
     <string name="matchesTeam">Team</string>
     <string name="matchesContact">Contact</string>
     <string name="menuAbout">About</string>

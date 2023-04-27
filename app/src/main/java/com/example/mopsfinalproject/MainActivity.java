@@ -11,14 +11,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try{
-            DBOperator.copyDB(getBaseContext());
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
     }
 

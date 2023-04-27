@@ -64,27 +64,62 @@ public abstract class SQLCommand
 
     public static String _00_GET_STUDENT_SKILLS = "SELECT skills.skill_name AS _skillname FROM skills, student_skills WHERE student_id = ? AND student_skills.skill_id = skills.skill_id";
 
-    public static String _00_GET_ATTRIBUTE = "SELECT ? FROM ? WHERE ? = ?";
+    public static String _00_GET_ATTRIBUTE = "SELECT ? AS _attr FROM ? WHERE ? = ?";
 
-    public static String _00_GET_PROJECTS = "SELECT projects.proj_id AS \"_id\", projects.proj_title AS Title, projects.proj_desc AS Description, teams.team_name AS Team " +
+    public static String _00_GET_PROJECTS = "SELECT DISTINCT projects.proj_id AS _id, projects.proj_title AS Title, projects.proj_desc AS Description, teams.team_name AS Team " +
                                                 "FROM projects, team_projects, team_members, teams " +
                                                 "WHERE ? = team_members.student_id " +
                                                     "AND team_members.team_id = team_projects.team_id " +
                                                     "AND team_projects.proj_id = projects.proj_id";
 
-    public static  String _00_GET_TEAMS = "SELECT teams.team_id AS \"_id\", teams.team_name as Name" +
-                                                   " FROM teams, team_members " +
+    public static  String _00_GET_TEAMS = "SELECT teams.team_id AS _id, teams.team_name as _name " +
+                                                   "FROM teams, team_members " +
                                                         "WHERE team_members.student_id = ?";
 
     public static String _00_GET_ALL_USERS = "SELECT student_id AS _username FROM student";
 
-    public static String _00_GET_MATCHES = "SELECT projects.proj_id AS \"_id\", projects.proj_title AS Name, teams.team_name AS Team, projects.advisor_email AS Contact " +
+    public static String _00_GET_PROJECT_MATCHES = "SELECT DISTINCT projects.proj_id AS \"_id\", projects.proj_title AS Name, teams.team_name AS Team, projects.advisor_email AS Contact " +
                                                 "FROM projects, teams, student_skills, team_skills, team_projects " +
                                                     "WHERE student_skills.student_id = ? " +
                                                     "AND student_skills.skill_id = team_skills.skill_id " +
                                                     "AND team_skills.team_id = teams.team_id " +
                                                     "AND teams.team_id = team_projects.team_id " +
                                                     "AND team_projects.proj_id = projects.proj_id";
+
+    public static String _00_GET_PROJECT_DATA = "SELECT * FROM projects WHERE proj_id = ?";
+
+    public static String _00_GET_TEAM = "SELECT teams.team_id as _id, teams.team_name as _teamname FROM teams, team_projects " +
+                                            "WHERE team_projects.proj_id = ? AND team_projects.team_id = teams.team_id";
+
+    public static String _00_GET_TEAM_MEMBERS = "SELECT student.student_id AS _id, student.stud_first_name as _first, student.stud_last_name as _last " +
+                                                    "FROM student, team_members, team_projects " +
+                                                    "WHERE team_projects.proj_id = ? " +
+                                                    "AND team_projects.team_id = team_members.team_id " +
+                                                    "AND team_members.student_id = student.student_id";
+
+    public static String _00_GET_TEAM_SKILLS_NEEDED = "SELECT skills.skill_id AS _id, skills.skill_name AS _skillname FROM skills, team_skills, team_projects " +
+                                                            "WHERE team_projects.proj_id = ? AND team_projects.team_id = team_skills.team_id " +
+                                                                "AND team_skills.skill_id = skills.skill_id";
+
+    public static String _00_JOIN_TEAM = "INSERT INTO team_members(team_id, student_id) VALUES (?,?)";
+
+    public static String _00_JOIN_PROJECT = "INSERT INTO project_teams(proj_id, team_id) VALUES (?,?)";
+
+    public static String _00_GET_STUDENT_MATCHES = "SELECT DISTINCT student.student_id AS _id, student.stud_first_name AS _first, student.stud_last_name AS _last " +
+                                                        "FROM student, student_skills, team_skills, team_projects " +
+                                                            "WHERE team_projects.proj_id = ? " +
+                                                                "AND team_projects.team_id = team_skills.team_id " +
+                                                                "AND student_skills.skill_id = team_skills.skill_id " +
+                                                                "AND student_skills.student_id = student.student_id";
+
+    public static String _00_GET_PROJECT_SKILLS = "SELECT skills.skill_id AS _id, skills.skill_name as _skillname " +
+                                                        "FROM skills, team_projects, team_skills " +
+                                                        "WHERE ? = team_projects.proj_id " +
+                                                            "AND team_projects.team_id = team_skills.team_id " +
+                                                            "AND team_skills.skill_id = skills.skill_id";
+
+
+
 
 }
 

@@ -45,7 +45,7 @@
         </activity>
 
         <activity
-            android:name=".DataActivity"
+            android:name=".DataProfileActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -73,6 +73,25 @@
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity
+            android:name=".DataProjectActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".DataMatchesProjectsActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".MatchStudentActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
 
     </application>
 

@@ -2,6 +2,8 @@ package com.example.mopsfinalproject.custom;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.mopsfinalproject.R;
 import com.example.mopsfinalproject.constant.SQLCommand;
@@ -9,11 +11,15 @@ import com.example.mopsfinalproject.util.DBOperator;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 public abstract class DBOPS {
     public static String GenerateID(int n) {
@@ -88,8 +94,7 @@ public abstract class DBOPS {
         return map.get(key);
     }
 
-    public static void CommitSkills (String studentID, String[] skills) {
-
+    public static void CommitStudentSkills(String studentID, String[] skills) {
         for (String skill : skills) {
             String[] args = new String[] {studentID, skill};
             DBOperator.getInstance().execSQL(SQLCommand._01_INSERT_STUDENT_SKILLS, args);
@@ -100,6 +105,26 @@ public abstract class DBOPS {
     public static void CommitNewStudent (String[] args) {
         DBOperator.getInstance().execSQL(SQLCommand._00_COMMIT_NEW_USER, args);
 
+    }
+
+    public static Map<String, String> AttributesToHashMap (String[] attributes, String sql, String[] args) {
+        Map<String, String> map = new HashMap<>();
+        String val;
+
+        for (int i = 0; i < attributes.length; i++) {
+            Cursor cursor = DBOperator.getInstance().execQuery(sql, args);
+
+            if (cursor.moveToFirst()) {
+                int idx = cursor.getColumnIndex(attributes[i]);
+                val = cursor.getString(idx);
+                cursor.close();
+            } else val = "ukn";
+
+            map.put(attributes[i], val);
+        }
+
+        return map;
+//   End AttributesToMap
     }
 
 
@@ -144,7 +169,19 @@ public abstract class DBOPS {
         };
     }
 
-    public static String GetUserName (String studentID) {
+    public static String[] projectAttributes() {
+        return new String[] {
+                "proj_id",
+                "proj_title",
+                "proj_desc",
+                "proj_created_on",
+                "proj_end",
+                "proj_start",
+                "advisor_email"
+        };
+    }
+
+    public static String getStudentName(String studentID) {
         String name;
         String [] args = new String[] {studentID};
 
@@ -162,23 +199,23 @@ public abstract class DBOPS {
 
     public static String GetAttribute(String colLookup, String table, String colPK, String pk) {
         String attr;
-        String[] args = new String[] {colLookup, table, colPK, pk};
 
         String query;
 
         query = "SELECT " + colLookup + " FROM " + table + " WHERE " + colPK + " = " + pk;
 
-        Cursor cursor = DBOperator.getInstance().execQuery(query, args);
+        Cursor cursor = DBOperator.getInstance().execQuery(query);
 
         if (cursor.moveToFirst()) {
-            int idx = cursor.getColumnIndex(colLookup);
+            int idx = cursor.getColumnIndex("_attr");
             attr = cursor.getString(idx);
             cursor.close();
+
             return attr;
         }
+        cursor.close();
 
         return "ukn";
-
     }
 
     public static String[] getStudentSkills(String studentID) {
@@ -200,27 +237,110 @@ public abstract class DBOPS {
         return skills;
     }
 
-    public static String[] getUsers () {
-        String[] users;
+    public static String[] getAllUsers() {
+        return getAttributeCol(SQLCommand._00_GET_ALL_USERS, "_username");
+    }
 
-        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._00_GET_ALL_USERS);
+    public static String[] getAttributeCol(String sql, String col, String[] args) {
+        String[] results;
+
+        Cursor cursor = DBOperator.getInstance().execQuery(sql, args);
         int size = cursor.getCount();
 
-        users = new String[size];
+        results = new String[size];
 
         cursor.moveToFirst();
         int i = 0;
-        while (cursor.isAfterLast() == false && i < size) {
-            int idx = cursor.getColumnIndex("_username");
-            users[i] = cursor.getString(idx);
+        while (!cursor.isAfterLast() && i < size) {
+            int idx = cursor.getColumnIndex(col);
+            results[i] = cursor.getString(idx);
             i++;
             cursor.moveToNext();
         }
         cursor.close();
 
-        return users;
+        return results;
+
     }
 
+    public static String[] getAttributeCol(String sql, String col) {
+        String[] results;
+
+        Cursor cursor = DBOperator.getInstance().execQuery(sql);
+        int size = cursor.getCount();
+
+        results = new String[size];
+
+        cursor.moveToFirst();
+        int i = 0;
+        while (cursor.isAfterLast() == false && i < size) {
+            int idx = cursor.getColumnIndex(col);
+            results[i] = cursor.getString(idx);
+            i++;
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return results;
+
+    }
+
+    public static String ArrayToString (String[] array) {
+        String line = "";
+        int size = array.length;
+        int i = 0;
+
+        for (String str : array) {
+            line += str;
+            if (i < size - 1) line += "\n";
+            i++;
+        }
+
+        return line;
+    }
+
+    public static void JoinProject(String studentID, String projectID) {
+        String teamID = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAM, "_id", new String[] {projectID})[0];
+
+        String [] argsJoinTeam = new String[] {projectID, studentID};
+        String[] argsJoinProject = new String[] {projectID, teamID};
+
+        DBOperator.getInstance().execSQL(SQLCommand._00_JOIN_TEAM, argsJoinTeam);
+        System.out.println("USER " + studentID + "SUCCESSFULLY JOINED TEAM " + teamID);
+
+    }
+    public static boolean isInProject(String userID, String projectID) {
+        List listProjects = Arrays.asList(getAttributeCol(SQLCommand._00_GET_PROJECTS, "_id", new String[] {userID}));
+
+        if (listProjects.contains(projectID)) {
+            return true;
+        } else return false;
+    }
+
+    public static boolean isDuplicateSkillset(String[] skills)
+    {
+        List<String> skillList = Arrays.asList(skills);
+
+        if (new HashSet<>(skillList).size() < skills.length) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean checkSkillSpinners (Context context, Spinner spinnerSkill1, Spinner spinnerSkill2, Spinner spinnerSkill3) {
+        String Skill1 = DBOPS.getSkillID(context, spinnerSkill1.getSelectedItem().toString());
+        String Skill2 = DBOPS.getSkillID(context, spinnerSkill2.getSelectedItem().toString());
+        String Skill3 = DBOPS.getSkillID(context, spinnerSkill3.getSelectedItem().toString());
+
+        String[] skills = new String[] {Skill1, Skill2, Skill3};
+
+        if (isDuplicateSkillset(skills)) {
+            Toast.makeText(context,"Please select distinct skills.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
 
 
 

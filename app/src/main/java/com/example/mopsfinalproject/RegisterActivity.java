@@ -3,8 +3,6 @@ package com.example.mopsfinalproject;
 import android.os.Bundle;
 import com.example.mopsfinalproject.custom.Menu;
 import com.example.mopsfinalproject.custom.SpinnerAdapter;
-import com.example.mopsfinalproject.constant.SQLCommand;
-import com.example.mopsfinalproject.util.DBOperator;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import android.app.Activity;
@@ -16,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 public class RegisterActivity extends Activity implements OnClickListener{
@@ -161,13 +161,15 @@ public class RegisterActivity extends Activity implements OnClickListener{
         int id = v.getId();
 
         if(id==R.id.btnFinish){
-            studentID = CommitToDatabase();
 
-            Intent intent = new Intent(this, ProfileHomeActivity.class);
-            intent.putExtra("studentID", studentID);
+            if (DBOPS.checkSkillSpinners(this, spinnerSkill1, spinnerSkill2, spinnerSkill3)) {
+                studentID = CommitToDatabase();
 
-            this.startActivity(intent);
+                Intent intent = new Intent(this, ProfileHomeActivity.class);
+                intent.putExtra("studentID", studentID);
 
+                this.startActivity(intent);
+            }
         }
 
     // End onClick
@@ -229,9 +231,10 @@ public class RegisterActivity extends Activity implements OnClickListener{
         };
 
         DBOPS.CommitNewStudent(argsNewStudent);
-        DBOPS.CommitSkills(studentID, argsSkills);
+        DBOPS.CommitStudentSkills(studentID, argsSkills);
 
         return studentID;
+
 //        End of CommitToDatabase()
     }
 

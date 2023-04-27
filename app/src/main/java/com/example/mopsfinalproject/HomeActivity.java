@@ -22,12 +22,16 @@ public class HomeActivity extends Activity implements OnClickListener{
     Toolbar toolbar;
     EditText login;
 
-    DBOperator db;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try{
+            DBOperator.copyDB(getBaseContext());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
@@ -68,7 +72,7 @@ public class HomeActivity extends Activity implements OnClickListener{
 
     private boolean checkUser (String userID) {
 
-        List listUsers = Arrays.asList(DBOPS.getUsers());
+        List listUsers = Arrays.asList(DBOPS.getAllUsers());
 
         if (listUsers.contains(userID)) {
             return true;
