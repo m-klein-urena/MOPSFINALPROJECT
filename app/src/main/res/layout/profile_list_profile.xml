@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/stdMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/listLabel"
+                android:layout_width="@dimen/listWidthLabel"
+                android:layout_height="@dimen/listHeight"
+                android:layout_marginVertical="@dimen/listMarginVertical"
+                android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/listLabel"/>
+
+            <TextView
+                android:id="@+id/listValue"
+                android:layout_width="@dimen/listWidthValue"
+                android:layout_height="@dimen/listHeight"
+                android:layout_marginVertical="@dimen/listMarginVertical"
+                android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/listValue"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

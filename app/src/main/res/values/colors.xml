@@ -11,6 +11,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="offWhite">#ECECEC</color>
     <color name="grayBtn">#d1d1d7</color>
     <color name="grayBtnPushed">#c7c7cc</color>
     <color name="grayedOut">#666666</color>

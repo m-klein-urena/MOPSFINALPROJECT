@@ -108,7 +108,7 @@
                 android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
                 android:layout_gravity="center_vertical"
                 android:theme="@style/textBox"
-                android:hint="@string/inptAddress2"
+                android:hint="@string/inptAddress2Optional"
                 android:background="@drawable/textbox"/>
 
             <EditText
@@ -184,15 +184,69 @@
                 android:layout_marginVertical="@dimen/stdMarginVertical"
                 android:theme="@style/horizontalBarGray"/>
 
+            <Spinner
+                android:id="@+id/newUserSchool"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+
+            <Spinner
+                android:id="@+id/newUserSkill1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+            <Spinner
+                android:id="@+id/newUserSkill2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+            <Spinner
+                android:id="@+id/newUserSkill3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+
+
             <Button
-                android:id="@+id/btnRegister01Next"
+                android:id="@+id/btnFinish"
                 android:layout_width="@dimen/btnWidth"
                 android:layout_height="@dimen/btnHeight"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="@dimen/stdMarginVertical"
                 android:theme="@style/btnStandard"
                 android:background="@drawable/button"
-                android:text="@string/btnNext"/>
+                android:text="@string/btnFinish"/>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

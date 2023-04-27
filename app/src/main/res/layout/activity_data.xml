@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_main"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/stdMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="@dimen/groupHeight"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="@dimen/headerMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/headerLabel"
+                    android:text="@string/headerProfileDate"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelID"/>
+
+                <TextView
+                    android:id="@+id/dataStudentID"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelCreate"/>
+
+                <TextView
+                    android:id="@+id/dataAcctCreate"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelFirst"/>
+
+                <TextView
+                    android:id="@+id/dataFirst"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelLast"/>
+
+                <TextView
+                    android:id="@+id/dataLast"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelPreferred"/>
+
+                <TextView
+                    android:id="@+id/dataPreferred"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelPronouns"/>
+
+                <TextView
+                    android:id="@+id/dataPronouns"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelAddress1"/>
+
+                <TextView
+                    android:id="@+id/dataAddress1"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelAddress2"/>
+
+                <TextView
+                    android:id="@+id/dataAddress2"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelCity"/>
+
+                <TextView
+                    android:id="@+id/dataCity"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelState"/>
+
+                <TextView
+                    android:id="@+id/dataState"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelZIP"/>
+
+                <TextView
+                    android:id="@+id/dataZIP"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelPhone"/>
+
+                <TextView
+                    android:id="@+id/dataPhone"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelEmail"/>
+
+                <TextView
+                    android:id="@+id/dataEmail"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelSchool"/>
+
+                <TextView
+                    android:id="@+id/dataSchool"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelSkill1"/>
+
+                <TextView
+                    android:id="@+id/dataSkill1"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelSkill2"/>
+
+                <TextView
+                    android:id="@+id/dataSkill2"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/listWidthLabel"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listLabel"
+                    android:text="@string/labelSkill3"/>
+
+                <TextView
+                    android:id="@+id/dataSkill3"
+                    android:layout_width="@dimen/listWidthValue"
+                    android:layout_height="@dimen/listHeight"
+                    android:layout_marginVertical="@dimen/listMarginVertical"
+                    android:paddingHorizontal="@dimen/listPaddingHorizontal"
+                    android:layout_gravity="center_vertical"
+                    android:theme="@style/listValue"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnBackData"
+                android:layout_width="@dimen/btnWidth"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/btnStandard"
+                android:background="@drawable/button"
+                android:text="@string/btnBack"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

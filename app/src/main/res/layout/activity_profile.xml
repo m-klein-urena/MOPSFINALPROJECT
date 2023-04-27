@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_main"/>
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/headerProfileHome"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/groupHeight"
+            android:layout_marginVertical="@dimen/stdMarginVertical"
+            android:paddingHorizontal="@dimen/stdPaddingHorizontal"
+            android:theme="@style/headerLabel"/>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/headerMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btnProfile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/groupHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/stdPaddingHorizontal"
+                android:theme="@style/textGroup"
+                android:text="@string/groupProfile"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/headerMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btnProject"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/groupHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/stdPaddingHorizontal"
+                android:theme="@style/textGroup"
+                android:text="@string/groupProjects"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/headerMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btnTeam"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/groupHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/stdPaddingHorizontal"
+                android:theme="@style/textGroup"
+                android:text="@string/groupTeams"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/headerMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btnMatches"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/groupHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:paddingHorizontal="@dimen/stdPaddingHorizontal"
+                android:theme="@style/textGroup"
+                android:text="@string/groupMatches"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

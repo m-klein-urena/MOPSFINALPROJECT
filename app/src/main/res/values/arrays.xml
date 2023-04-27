@@ -10,13 +10,6 @@
         <item>Query 7</item>
     </string-array>
 
-    <string-array name="degree_array">
-        <item>Select Degree</item>
-        <item>Thingbuilding</item>
-        <item>People Studies</item>
-        <item>Business</item>
-    </string-array>
-
     <string-array name="pronoun_array">
         <item>Select Pronouns</item>
         <item>They/Them</item>
@@ -26,18 +19,23 @@
 
     <string-array name="school_array">
         <item>Select School</item>
-        <item>WPI - Worcester Polytechnic Institute</item>
-        <item>WSU - Worcester State University</item>
-        <item>QCC - Quinsigamond Community College</item>
+        <item>@string/schoolWPI</item>
+        <item>@string/schoolWSU</item>
+        <item>@string/schoolClark</item>
     </string-array>
 
     <string-array name="skill_array">
         <item>Select Skill</item>
-        <item>Can talk to animals</item>
-        <item>Works well under pressure</item>
-        <item>Amazing grant writer</item>
-        <item>Telekinesis</item>
-
+        <item>@string/skill01</item>
+        <item>@string/skill02</item>
+        <item>@string/skill03</item>
+        <item>@string/skill04</item>
+        <item>@string/skill05</item>
+        <item>@string/skill06</item>
+        <item>@string/skill07</item>
+        <item>@string/skill08</item>
+        <item>@string/skill09</item>
+        <item>@string/skill10</item>
     </string-array>
 
     <string-array name="states_array">

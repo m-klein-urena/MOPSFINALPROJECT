@@ -8,7 +8,18 @@
     <dimen name="btnWidth">144dp</dimen>
     <dimen name="btnWidthAdd">144dp</dimen>
 
+    <dimen name="groupHeight">50dp</dimen>
+
+    <dimen name="listHeight">48dp</dimen>
+    <dimen name="listMarginVertical">5dp</dimen>
+    <dimen name="listPaddingHorizontal">5dp</dimen>
+    <dimen name="listWidthLabel">100dp</dimen>
+    <dimen name="listWidthValue">200dp</dimen>
+
     <dimen name="headerMarginVertical">15dp</dimen>
+
+    <dimen name="queryBoxHeight">300dp</dimen>
+    <dimen name="queryBoxWidth">260dp</dimen>
 
     <dimen name="stdMarginVertical">10dp</dimen>
 
@@ -19,7 +30,7 @@
     <dimen name="stdPaddingVertical">5dp</dimen>
 
     <dimen name="textboxCornerRadius">10dp</dimen>
-    <dimen name="textboxHeight">40dp</dimen>
+    <dimen name="textboxHeight">48dp</dimen>
     <dimen name="textboxPaddingHorizontal">30dp</dimen>
     <dimen name="textboxMarginHorizontal">30dp</dimen>
 

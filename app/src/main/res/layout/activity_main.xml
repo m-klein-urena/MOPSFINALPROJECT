@@ -71,6 +71,7 @@
                 android:layout_weight="1"/>
 
             <EditText
+                android:id="@+id/inptLogin"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_gravity="start"

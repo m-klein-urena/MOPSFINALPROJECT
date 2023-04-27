@@ -2,6 +2,9 @@
     <string name="app_name">MOPS</string>
 
     <string name="btnAddSkill">Add Skill</string>
+    <string name="btnAddProject">Add Project</string>
+    <string name="btnAddTeam">Add Team</string>
+    <string name="btnBack">Go Back</string>
     <string name="btnFinish">Finish</string>
     <string name="btnNext">Next</string>
     <string name="bookID_text">Book ID</string>
@@ -15,6 +18,14 @@
     <string name="newUser">Do Query</string>
     <string name="newUserHeader">New User</string>
 
+    <string name="groupMatches">FIND PROJECT MATCHES</string>
+    <string name="groupProfile">PROFILE</string>
+    <string name="groupProjects">PROJECTS</string>
+    <string name="groupSchoolmates">OTHER STUDENTS</string>
+    <string name="groupTeams">TEAMS</string>
+
+
+    <string name="headerProfileDate">Your Data</string>
     <string name="hint">Select</string>
     <string name="home_instruction">Log in or sign up below.</string>
     <string name="home_login">Log in</string>
@@ -26,9 +37,11 @@
     <string name="inptFirst">First Name</string>
     <string name="inptLast">Last Name</string>
     <string name="inptPreferred">Preferred Name</string>
-    <string name="inptPronouns">Select Pronouns</string>
+    <string name="inptPronouns">Pronouns</string>
+    <string name="inptPronounsSelect">Select Pronouns</string>
     <string name="inptAddress1">Address Line 1</string>
-    <string name="inptAddress2">Address Line 2 (optional)</string>
+    <string name="inptAddress2">Address Line 2</string>
+    <string name="inptAddress2Optional">Address Line 2 (optional)</string>
     <string name="inptCity">City</string>
     <string name="inptState">Selected State</string>
     <string name="inptZIP">ZIP</string>
@@ -37,10 +50,37 @@
     <string name="inptSchool">Select School</string>
     <string name="inptSkill">Select Skill</string>
 
+
+    <string name="labelID">User ID:</string>
+    <string name="labelCreate">Account Created:</string>
+    <string name="labelFirst">First Name:</string>
+    <string name="labelLast">Last Name:</string>
+    <string name="labelPreferred">Preferred Name:</string>
+    <string name="labelPronouns">Pronouns</string>
+    <string name="labelAddress1">Address</string>
+    <string name="labelAddress2">""</string>
+    <string name="labelCity">City</string>
+    <string name="labelState">State</string>
+    <string name="labelZIP">ZIP</string>
+    <string name="labelPhone">Phone</string>
+    <string name="labelEmail">Email</string>
+    <string name="labelSchool">School</string>
+    <string name="labelSkill1">Skill 1</string>
+    <string name="labelSkill2">Skill 2</string>
+    <string name="labelSkill3">Skill 3</string>
+
+
+    <string name="matchesName">Project</string>
+    <string name="matchesTeam">Team</string>
+    <string name="matchesContact">Contact</string>
     <string name="menuAbout">About</string>
     <string name="menuSettings">Settings</string>
     <string name="menuLogout">Sign Out</string>
     <string name="menuHome">Home</string>
+
+    <string name="prjName">Name</string>
+    <string name="prjDesc">Description</string>
+    <string name="prjTeam">Team</string>
 
     <string name="query_prompt">Choose a query</string>
 
@@ -48,10 +88,29 @@
     <string name="registerSkills">Skills</string>
     <string name="return_btn">Return</string>
 
+    <string name="schoolWPI">WPI - Worcester Polytechnic Institute</string>
+    <string name="schoolWSU">WSU - Worcester State University</string>
+    <string name="schoolClark">CLR - Clark University</string>
+
     <string name="showresult">Show Result</string>
     <string name="showresult_btn">Show Result</string>
     <string name="studentID_text">Student ID</string>
     <string name="summary_btn">Summary</string>
+
+    <string name="skill01">Python programming</string>
+    <string name="skill02">Data analysis</string>
+    <string name="skill03">Leadership</string>
+    <string name="skill04">Project management</string>
+    <string name="skill05">Communication</string>
+    <string name="skill06">Time management</string>
+    <string name="skill07">Critical thinking</string>
+    <string name="skill08">Collaboration</string>
+    <string name="skill09">Creativity</string>
+    <string name="skill10">Problem solving</string>
+
+
+    <string name="teamName">Name</string>
+    <string name="teamQtyMembers">QtyMembers</string>
 
     <string name="title_query">Query</string>
     <string name="strToolbarLogin">Welcome to the MOPS App</string>

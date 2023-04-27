@@ -36,16 +36,16 @@
                 android:theme="@style/textBox"
                 android:background="@drawable/textbox"/>
 
-            <Spinner
-                android:id="@+id/newUserDegree"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/textboxHeight"
-                android:layout_marginVertical="@dimen/stdMarginVertical"
-                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
-                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
-                android:layout_gravity="center_vertical"
-                android:theme="@style/textBox"
-                android:background="@drawable/textbox"/>
+<!--            <Spinner-->
+<!--                android:id="@+id/newUserDegree"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/textboxHeight"-->
+<!--                android:layout_marginVertical="@dimen/stdMarginVertical"-->
+<!--                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"-->
+<!--                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:theme="@style/textBox"-->
+<!--                android:background="@drawable/textbox"/>-->
 
             <TextView
                 android:layout_height="wrap_content"

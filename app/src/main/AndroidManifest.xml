@@ -27,13 +27,49 @@
 
 
         <activity
-            android:name=".RegisterActivity01"
+            android:name=".RegisterActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
             android:name=".RegisterActivity02"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".ProfileHomeActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".DataActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".ProjectsActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".ViewProjectListActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".TeamsActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".MatchActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
