@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.mopsfinalproject.custom.DBOPS;
 import com.example.mopsfinalproject.custom.Menu;
 
-public class ProfileHomeActivity extends Activity implements View.OnClickListener{
+public class UserHomeActivity extends Activity implements View.OnClickListener{
     TextView btnProfile;
     TextView btnProjects;
     TextView btnTeams;
@@ -24,7 +24,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_user_home);
 
         Bundle extras = getIntent().getExtras();
         String[] data = extras.getString("student_prjID").split("\\$");
@@ -57,7 +57,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
         int id = v.getId();
 
         if(id==R.id.btnProfile){
-            Intent intent = new Intent(this, DataProfileActivity.class);
+            Intent intent = new Intent(this, UserDataActivity.class);
             DBOPS.PackExtras(intent, userID, "ukn");
 
             this.startActivity(intent);
@@ -81,7 +81,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
         }
 
         if(id==R.id.btnMatches){
-            Intent intent = new Intent(this, MatchActivity.class);
+            Intent intent = new Intent(this, MatchProjectActivity.class);
             DBOPS.PackExtras(intent, userID, "ukn");
 
             this.startActivity(intent);

@@ -5,7 +5,7 @@ package com.example.mopsfinalproject.custom;
  * Including select/delete/update/insert
  */
 
-public abstract class SQLCommand
+public abstract class SQLScripts
 {
     /**
      * VERIFICATION AND LOGIN

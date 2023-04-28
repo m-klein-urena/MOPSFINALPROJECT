@@ -51,6 +51,8 @@ CREATE TABLE university (
   
 );    
 
+CREATE INDEX idx_univ_state ON university (univ_state);  
+
 
 CREATE TABLE student (    
     student_id CHAR(6) PRIMARY KEY,    
@@ -70,6 +72,7 @@ CREATE TABLE student (
     FOREIGN KEY (univ_id) REFERENCES university(univ_id)   
 );    
 
+CREATE INDEX idx_stud_last ON student(stud_last_name);   
 
 CREATE TABLE skills (    
   skill_id CHAR(5) PRIMARY KEY,    
@@ -115,6 +118,9 @@ CREATE TABLE projects (
   proj_start DATE,   
   advisor_email NVARCHAR(40)   
 );    
+
+CREATE INDEX idx_proj_created_on ON projects(proj_created_on); 
+
 CREATE TABLE team_projects (    
   team_id CHAR(6),    
   proj_id CHAR(6),    

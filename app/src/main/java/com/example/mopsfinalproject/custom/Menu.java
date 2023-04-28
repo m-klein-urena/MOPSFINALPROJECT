@@ -3,12 +3,11 @@ package com.example.mopsfinalproject.custom;
 import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.mopsfinalproject.HomeActivity;
-import com.example.mopsfinalproject.ProfileHomeActivity;
+import com.example.mopsfinalproject.UserHomeActivity;
 import com.example.mopsfinalproject.R;
 
 public class Menu {
@@ -29,7 +28,7 @@ public class Menu {
 
     private static void menuActions(Context context, MenuItem item, String studentID) {
         if (item.getItemId()== R.id.actionProfileHome) {
-            Intent intent = new Intent(context, ProfileHomeActivity.class);
+            Intent intent = new Intent(context, UserHomeActivity.class);
             DBOPS.PackExtras(intent, studentID, "ukn");
             context.startActivity(intent);
 

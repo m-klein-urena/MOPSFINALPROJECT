@@ -32,58 +32,58 @@
         </LinearLayout>
 
 
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginVertical="@dimen/stdMarginVertical"
-                    android:theme="@style/horizontalBarGray"/>
-
-                <ListView
-                    android:id="@+id/listProjects"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/listviewHeight" >
-                </ListView>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/stdMarginVertical"
-                android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <ListView
+                android:id="@+id/listProjects"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/listviewHeight" >
+            </ListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/stdMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDetailsProject"
+                android:layout_width="@dimen/btnWidth"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/btnStandard"
+                android:background="@drawable/button"
+                android:text="@string/btnDetails"/>
+
+            <Button
+                android:id="@+id/btnAddProject"
+                android:layout_width="@dimen/btnWidth"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/stdMarginHorizontal"
+                android:theme="@style/btnStandard"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnDetailsProject"
-                    android:layout_width="@dimen/btnWidth"
-                    android:layout_height="@dimen/btnHeight"
-                    android:layout_gravity="center|center_vertical"
-                    android:layout_marginVertical="@dimen/stdMarginVertical"
-                    android:theme="@style/btnStandard"
-                    android:background="@drawable/button"
-                    android:text="@string/btnDetails"/>
-
-                <Button
-                    android:id="@+id/btnAddProject"
-                    android:layout_width="@dimen/btnWidth"
-                    android:layout_height="@dimen/btnHeight"
-                    android:layout_gravity="center|center_vertical"
-                    android:layout_marginVertical="@dimen/stdMarginVertical"
-                    android:layout_marginHorizontal="@dimen/stdMarginHorizontal"
-                    android:theme="@style/btnStandard"
-                    android:gravity="center"
-                    android:background="@drawable/button"
-                    android:text="@string/btnAddProject"/>
+                android:background="@drawable/button"
+                android:text="@string/btnAddProject"/>
 
 
-            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_height="wrap_content"

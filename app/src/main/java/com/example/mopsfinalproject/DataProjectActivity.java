@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.mopsfinalproject.custom.Menu;
-import com.example.mopsfinalproject.custom.SQLCommand;
+import com.example.mopsfinalproject.custom.SQLScripts;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.Map;
@@ -35,7 +35,7 @@ public class DataProjectActivity extends Activity implements View.OnClickListene
         studentID = data[0];
         projectID = data[1];
 
-        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLCommand._10_GET_PROJECT_DATA, new String[] {projectID});
+        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLScripts._10_GET_PROJECT_DATA, new String[] {projectID});
 
         PopulateData();
 
@@ -59,7 +59,7 @@ public class DataProjectActivity extends Activity implements View.OnClickListene
         int id = v.getId();
 
         if(id==R.id.btnBackData){
-            Intent intent = new Intent(this, ProfileHomeActivity.class);
+            Intent intent = new Intent(this, UserHomeActivity.class);
             DBOPS.PackExtras(intent, studentID, "ukn");
             this.startActivity(intent);
         }
@@ -97,18 +97,18 @@ public class DataProjectActivity extends Activity implements View.OnClickListene
         txtEnd.setText(projectData.get(attributes[5]));
         txtAdvisor.setText(projectData.get(attributes[6]));
 
-        String team = DBOPS.getAttributeCol(SQLCommand._11_GET_TEAM, "_teamname", args)[0];
+        String team = DBOPS.getAttributeCol(SQLScripts._11_GET_TEAM, "_teamname", args)[0];
         txtTeam.setText(team);
 
-        String[] skillsarray = DBOPS.getAttributeCol(SQLCommand._13_GET_TEAM_SKILLS_NEEDED, "_skillname", args);
+        String[] skillsarray = DBOPS.getAttributeCol(SQLScripts._13_GET_TEAM_SKILLS_NEEDED, "_skillname", args);
         String skills = DBOPS.ArrayToString(skillsarray);
 
         System.out.println(skillsarray.length);
 
         txtSkills.setText(skills);
 
-        String[] members_first = DBOPS.getAttributeCol(SQLCommand._12_GET_TEAM_MEMBERS, "_first", args);
-        String[] members_last = DBOPS.getAttributeCol(SQLCommand._12_GET_TEAM_MEMBERS, "_last", args);
+        String[] members_first = DBOPS.getAttributeCol(SQLScripts._12_GET_TEAM_MEMBERS, "_first", args);
+        String[] members_last = DBOPS.getAttributeCol(SQLScripts._12_GET_TEAM_MEMBERS, "_last", args);
 
         StringBuilder members = new StringBuilder();
         for (int i = 0; i < members_first.length; i++) {

@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 
 import com.example.mopsfinalproject.custom.Menu;
-import com.example.mopsfinalproject.custom.SQLCommand;
+import com.example.mopsfinalproject.custom.SQLScripts;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class TeamsActivity extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_matches);
+        setContentView(R.layout.activity_list_matches);
 
         Bundle extras = getIntent().getExtras();
         String[] data = extras.getString("student_prjID").split("\\$");
@@ -81,8 +81,8 @@ public class TeamsActivity extends Activity implements View.OnClickListener {
         listTeams = new ArrayList<String>();
 
 
-        arrayTeams = DBOPS.getAttributeCol(SQLCommand._09_GET_TEAMS, "_name", new String[] {studentID});
-        arrayTeamID = DBOPS.getAttributeCol(SQLCommand._09_GET_TEAMS, "_id", new String[] {studentID});
+        arrayTeams = DBOPS.getAttributeCol(SQLScripts._09_GET_TEAMS, "_name", new String[] {studentID});
+        arrayTeamID = DBOPS.getAttributeCol(SQLScripts._09_GET_TEAMS, "_id", new String[] {studentID});
 
         for (String team : arrayTeams)
             listTeams.add(team);

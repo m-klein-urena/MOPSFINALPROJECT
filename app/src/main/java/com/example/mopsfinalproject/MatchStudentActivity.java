@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.mopsfinalproject.custom.Menu;
-import com.example.mopsfinalproject.custom.SQLCommand;
+import com.example.mopsfinalproject.custom.SQLScripts;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_matches);
+        setContentView(R.layout.activity_list_matches);
 
         Bundle extras = getIntent().getExtras();
         String[] data = extras.getString("student_prjID").split("\\$");
@@ -45,7 +45,7 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
         projectID = data[1];
 
 
-        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLCommand._10_GET_PROJECT_DATA, new String[] {projectID});
+        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLScripts._10_GET_PROJECT_DATA, new String[] {projectID});
 
         btnBack = (Button) findViewById(R.id.btnGoBackMatchView);
         btnBack.setOnClickListener(this);
@@ -77,7 +77,7 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
 
         if (id == R.id.btnDetailsMatches) {
             if (btnDetails.isEnabled()) {
-                Intent intent = new Intent(this, DataProfileActivity.class);
+                Intent intent = new Intent(this, UserDataActivity.class);
                 DBOPS.PackExtras(intent, selectedStudentID, "ukn");
                 this.startActivity(intent);
             }
@@ -89,9 +89,9 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
         listMatches = new ArrayList<String>();
         String[] args = new String[] {projectID};
 
-        arrayStudentsFirst = DBOPS.getAttributeCol(SQLCommand._18_GET_STUDENT_MATCHES, "_first", args);
-        arrayStudentsLast = DBOPS.getAttributeCol(SQLCommand._18_GET_STUDENT_MATCHES, "_last", args);
-        arrayStudentID = DBOPS.getAttributeCol(SQLCommand._18_GET_STUDENT_MATCHES, "_id", args);
+        arrayStudentsFirst = DBOPS.getAttributeCol(SQLScripts._18_GET_STUDENT_MATCHES, "_first", args);
+        arrayStudentsLast = DBOPS.getAttributeCol(SQLScripts._18_GET_STUDENT_MATCHES, "_last", args);
+        arrayStudentID = DBOPS.getAttributeCol(SQLScripts._18_GET_STUDENT_MATCHES, "_id", args);
 
         for (int i = 0; i < arrayStudentsFirst.length; i++) {
             listMatches.add(arrayStudentsFirst[i] + " " + arrayStudentsLast[i]);
@@ -112,7 +112,7 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
     }
 
     private void init() {
-        String skills = DBOPS.ArrayToString(DBOPS.getAttributeCol(SQLCommand._14_GET_PROJECT_SKILLS, "_skillname", new String[] {projectID}));
+        String skills = DBOPS.ArrayToString(DBOPS.getAttributeCol(SQLScripts._14_GET_PROJECT_SKILLS, "_skillname", new String[] {projectID}));
         System.out.println("SKILLS: " + skills);
 
 
@@ -121,10 +121,5 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
 
         getMatches(projectID);
     }
-
-
-
-
-
 
 }

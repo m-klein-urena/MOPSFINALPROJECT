@@ -13,14 +13,14 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.mopsfinalproject.custom.Menu;
-import com.example.mopsfinalproject.custom.SQLCommand;
+import com.example.mopsfinalproject.custom.SQLScripts;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MatchActivity extends Activity implements View.OnClickListener {
+public class MatchProjectActivity extends Activity implements View.OnClickListener {
 
     private ListView listView;
     Map<String, String> studentData;
@@ -37,7 +37,7 @@ public class MatchActivity extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_matches);
+        setContentView(R.layout.activity_list_matches);
 
         Bundle extras = getIntent().getExtras();
         String[] data = extras.getString("student_prjID").split("\\$");
@@ -83,8 +83,8 @@ public class MatchActivity extends Activity implements View.OnClickListener {
         listView = (ListView) findViewById(R.id.listMatches);
         listMatches = new ArrayList<String>();
 
-        arrayProjects = DBOPS.getAttributeCol(SQLCommand._18_GET_PROJECT_MATCHES, "Name", new String[] {studentID});
-        arrayProjectID = DBOPS.getAttributeCol(SQLCommand._18_GET_PROJECT_MATCHES, "_id", new String[] {studentID});
+        arrayProjects = DBOPS.getAttributeCol(SQLScripts._18_GET_PROJECT_MATCHES, "Name", new String[] {studentID});
+        arrayProjectID = DBOPS.getAttributeCol(SQLScripts._18_GET_PROJECT_MATCHES, "_id", new String[] {studentID});
 
         for (String prj : arrayProjects)
             listMatches.add(prj);

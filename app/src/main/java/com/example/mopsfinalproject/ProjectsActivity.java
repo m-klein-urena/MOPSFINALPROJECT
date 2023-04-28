@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.mopsfinalproject.custom.Menu;
-import com.example.mopsfinalproject.custom.SQLCommand;
+import com.example.mopsfinalproject.custom.SQLScripts;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.ArrayList;
@@ -104,8 +104,8 @@ public class ProjectsActivity extends Activity implements View.OnClickListener {
         listProjects = new ArrayList<String>();
 
 
-        arrayProjects = DBOPS.getAttributeCol(SQLCommand._08_GET_PROJECTS, "Title", new String[] {studentID});
-        arrayProjectID = DBOPS.getAttributeCol(SQLCommand._08_GET_PROJECTS, "_id", new String[] {studentID});
+        arrayProjects = DBOPS.getAttributeCol(SQLScripts._08_GET_PROJECTS, "Title", new String[] {studentID});
+        arrayProjectID = DBOPS.getAttributeCol(SQLScripts._08_GET_PROJECTS, "_id", new String[] {studentID});
 
         for (String prj : arrayProjects)
             listProjects.add(prj);

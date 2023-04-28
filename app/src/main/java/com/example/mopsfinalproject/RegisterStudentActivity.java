@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -78,7 +77,7 @@ public class RegisterStudentActivity extends Activity implements OnClickListener
             if (DBOPS.checkSkillSpinners(this, spinnerSkill1, spinnerSkill2, spinnerSkill3)) {
                 studentID = CommitToDatabase();
 
-                Intent intent = new Intent(this, ProfileHomeActivity.class);
+                Intent intent = new Intent(this, UserHomeActivity.class);
                 DBOPS.PackExtras(intent, studentID, "ukn");
 
                 this.startActivity(intent);

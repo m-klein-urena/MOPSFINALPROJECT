@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.Map;
 
-public class DataProfileActivity extends Activity implements View.OnClickListener{
+public class UserDataActivity extends Activity implements View.OnClickListener{
     Map<String, String> studentData;
     String userID;
 

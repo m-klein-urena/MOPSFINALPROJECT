@@ -2,7 +2,7 @@ package com.example.mopsfinalproject;
 
 import com.example.mopsfinalproject.custom.DBOPS;
 import com.example.mopsfinalproject.util.DBOperator;
-import com.example.mopsfinalproject.custom.Menu;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,7 +51,7 @@ public class HomeActivity extends Activity implements OnClickListener{
             login = (EditText) findViewById(R.id.inptLogin);
 
             if (checkUser(login.getText().toString())) {
-                Intent intent = new Intent(this, ProfileHomeActivity.class);
+                Intent intent = new Intent(this, UserHomeActivity.class);
                 DBOPS.PackExtras(intent, login.getText().toString(), "ukn");
 
                 this.startActivity(intent);

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -15,13 +14,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.mopsfinalproject.custom.DBOPS;
 import com.example.mopsfinalproject.custom.Menu;
-import com.example.mopsfinalproject.custom.SQLCommand;
+import com.example.mopsfinalproject.custom.SQLScripts;
 import com.example.mopsfinalproject.custom.SpinnerAdapter;
 import com.example.mopsfinalproject.util.DBOperator;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class RegisterProjectActivity extends Activity implements OnClickListener{
 
@@ -133,10 +131,10 @@ public class RegisterProjectActivity extends Activity implements OnClickListener
         final String[] argsNewTeamMember = new String[] {teamID, studentID};
         final String[] argsNewProjectTeam = new String[] {projectID, teamID};
 
-        DBOperator.getInstance().execSQL(SQLCommand._03_INSERT_NEW_TEAM, argsNewTeam);
-        DBOperator.getInstance().execSQL(SQLCommand._04_INSERT_NEW_PROJECT, argsNewProject);
-        DBOperator.getInstance().execSQL(SQLCommand._15_JOIN_TEAM, argsNewTeamMember);
-        DBOperator.getInstance().execSQL(SQLCommand._16_JOIN_PROJECT, argsNewProjectTeam);
+        DBOperator.getInstance().execSQL(SQLScripts._03_INSERT_NEW_TEAM, argsNewTeam);
+        DBOperator.getInstance().execSQL(SQLScripts._04_INSERT_NEW_PROJECT, argsNewProject);
+        DBOperator.getInstance().execSQL(SQLScripts._15_JOIN_TEAM, argsNewTeamMember);
+        DBOperator.getInstance().execSQL(SQLScripts._16_JOIN_PROJECT, argsNewProjectTeam);
 
         DBOPS.CommitProjectSkills(teamID, skills);
 
