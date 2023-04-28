@@ -8,6 +8,8 @@
     <dimen name="btnWidth">144dp</dimen>
     <dimen name="btnWidthAdd">144dp</dimen>
 
+    <dimen name="dateHeight">50dp</dimen>
+
     <dimen name="groupHeight">50dp</dimen>
 
     <dimen name="listHeight">48dp</dimen>

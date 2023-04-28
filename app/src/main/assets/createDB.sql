@@ -112,7 +112,7 @@ CREATE TABLE projects (
   proj_desc NVARCHAR(150),    
   proj_created_on DATE,    
   proj_end DATE,     
-  proj_start DATE CHECK(proj_start < proj_end) ,   
+  proj_start DATE,   
   advisor_email NVARCHAR(40)   
 );    
 CREATE TABLE team_projects (    
@@ -179,7 +179,7 @@ VALUES
 (' ', ' ', ' ', '', '1', '0 ', ' '),   
 ('P00001', 'Sustainable Supply Chain', 'Description of Project 1', '2023-04-24', '2023-07-31', '2023-05-01', 'advisor1@univ.edu'),   
 ('P00002', 'AI', 'Description of Project 2', '2023-04-24', '2023-07-31', '2023-05-01', 'advisor2@univ.edu'),   
-('P00003', 'Blockchain', 'Description of Project 3', '2023-04-24', '2023-07-31', '2023-05-01', 'advisor3@univ.edu');   
+('P00003', 'Blockchain', 'Description of Project 3', '2023-04-24', '2023-07-31', '2023-05-0B1', 'advisor3@univ.edu');   
 INSERT INTO teams (team_id, team_name, Open, min, max, preferred)   
 VALUES   
 (' ', ' ', ' ', ' ', ' ', ' '), 

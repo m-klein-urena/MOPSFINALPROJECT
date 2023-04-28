@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_main"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/stdMarginVertical"
+            android:paddingHorizontal="@dimen/screenPaddingHorizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/textHeader"
+                android:gravity="center"
+                android:text="@string/headerNewProject"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <EditText
+                android:id="@+id/newProjectTeam"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptPrjTeam"
+                android:background="@drawable/textbox"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <EditText
+                android:id="@+id/newProjectName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptPrjName"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newProjectDesc"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptPrjDesc"
+                android:background="@drawable/textbox"/>
+
+            <EditText
+                android:id="@+id/newProjectAdvisor"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:hint="@string/inptPrjAdvisor"
+                android:background="@drawable/textbox"/>
+
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <TextView
+                android:id="@+id/headerNewProjectStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/textHeader"
+                android:gravity="center"
+                android:text="@string/inptPrjStart"/>
+
+            <DatePicker
+                android:id="@+id/newProjectStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:paddingHorizontal="20dp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <TextView
+                android:id="@+id/headerNewProjectEndDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/textHeader"
+                android:gravity="center"
+                android:text="@string/inptPrjEnd"/>
+
+            <DatePicker
+                android:id="@+id/newProjectEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:paddingHorizontal="20dp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/horizontalBarGray"/>
+
+            <Spinner
+                android:id="@+id/newProjectSkill1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+            <Spinner
+                android:id="@+id/newProjectSkill2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+            <Spinner
+                android:id="@+id/newProjectSkill3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textboxHeight"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:layout_marginHorizontal="@dimen/textboxMarginHorizontal"
+                android:paddingHorizontal="@dimen/textboxPaddingHorizontal"
+                android:layout_gravity="center_vertical"
+                android:theme="@style/textBox"
+                android:background="@drawable/textbox"/>
+
+            <Button
+                android:id="@+id/btnFinishNewProject"
+                android:layout_width="@dimen/btnWidth"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/stdMarginVertical"
+                android:theme="@style/btnStandard"
+                android:background="@drawable/button"
+                android:text="@string/btnFinish"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

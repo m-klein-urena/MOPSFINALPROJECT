@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.mopsfinalproject.custom.DBOPS;
+import com.example.mopsfinalproject.custom.Menu;
 
 public class ProfileHomeActivity extends Activity implements View.OnClickListener{
     TextView btnProfile;
@@ -16,6 +19,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
     String userID;
     String name;
     TextView header;
+    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,9 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
         setContentView(R.layout.activity_profile);
 
         Bundle extras = getIntent().getExtras();
-        userID = extras.getString("studentID");
+        String[] data = extras.getString("student_prjID").split("\\$");
+
+        userID = data[0];
         name = DBOPS.getStudentName(userID);
 
         btnProjects = (TextView) findViewById(R.id.btnProject);
@@ -39,17 +45,20 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
         btnMatches.setOnClickListener(this);
 
         header = (TextView) findViewById(R.id.headerProfileHome);
-        header.setText("Welcome, " + name);
+        header.setText("Welcome Back, " + name + "!\nUser ID: " + userID);
+
+        //        Call up toolbar and menu
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_main, userID);
 
     }
-
 
     public void onClick(View v){
         int id = v.getId();
 
         if(id==R.id.btnProfile){
             Intent intent = new Intent(this, DataProfileActivity.class);
-            intent.putExtra("studentID", userID);
+            DBOPS.PackExtras(intent, userID, "ukn");
 
             this.startActivity(intent);
 //            Toast.makeText(getBaseContext(), "Feature coming soon...", Toast.LENGTH_SHORT).show();
@@ -57,7 +66,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
 
         if(id==R.id.btnProject){
             Intent intent = new Intent(this, ProjectsActivity.class);
-            intent.putExtra("studentID", userID);
+            DBOPS.PackExtras(intent, userID, "ukn");
 
             this.startActivity(intent);
 //            Toast.makeText(getBaseContext(), "Feature coming soon...", Toast.LENGTH_SHORT).show();
@@ -65,7 +74,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
 
         if(id==R.id.btnTeam){
             Intent intent = new Intent(this, TeamsActivity.class);
-            intent.putExtra("studentID", userID);
+            DBOPS.PackExtras(intent, userID, "ukn");
 
             this.startActivity(intent);
 //            Toast.makeText(getBaseContext(), "Feature coming soon...", Toast.LENGTH_SHORT).show();
@@ -73,7 +82,7 @@ public class ProfileHomeActivity extends Activity implements View.OnClickListene
 
         if(id==R.id.btnMatches){
             Intent intent = new Intent(this, MatchActivity.class);
-            intent.putExtra("studentID", userID);
+            DBOPS.PackExtras(intent, userID, "ukn");
 
             this.startActivity(intent);
 //            Toast.makeText(getBaseContext(), "Feature coming soon...", Toast.LENGTH_SHORT).show();

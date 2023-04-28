@@ -12,15 +12,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.mopsfinalproject.constant.SQLCommand;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.mopsfinalproject.custom.Menu;
+import com.example.mopsfinalproject.custom.SQLCommand;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class ProjectsActivity extends Activity implements View.OnClickListener {
     String studentID;
@@ -32,6 +32,8 @@ public class ProjectsActivity extends Activity implements View.OnClickListener {
     private String[] arrayProjects, arrayProjectID;
     private String selectedProjectID;
     Button btnAddProject, btnGoBack, btnDetails;
+    ArrayAdapter<String> viewAdapter;
+    Toolbar toolbar;
 
 
     @Override
@@ -40,7 +42,10 @@ public class ProjectsActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_projects);
 
         Bundle extras = getIntent().getExtras();
-        studentID = extras.getString("studentID");
+        String[] data = extras.getString("student_prjID").split("\\$");
+
+        studentID = data[0];
+
         studentData = DBOPS.StudentToHashMap(studentID);
 
         btnAddProject = (Button) findViewById(R.id.btnAddProject);
@@ -56,6 +61,10 @@ public class ProjectsActivity extends Activity implements View.OnClickListener {
         header = (TextView) findViewById(R.id.queryHeaderProjects);
         header.setText(studentData.get("stud_first_name") + "\'s Projects");
 
+        //        Call up toolbar and menu
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_main, studentID);
+
         initListView(studentID);
 
     }
@@ -65,14 +74,18 @@ public class ProjectsActivity extends Activity implements View.OnClickListener {
         int id = v.getId();
 
         if (id == R.id.btnAddProject) {
-            Toast.makeText(getBaseContext(), "Feature coming soon...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, RegisterProjectActivity.class);
+            DBOPS.PackExtras(intent, studentID, "ukn");
+            viewAdapter.clear();
+
+            this.startActivity(intent);
         }
 
         if (id == R.id.btnDetailsProject) {
             if (btnDetails.isEnabled()) {
                 Intent intent = new Intent(this, DataProjectActivity.class);
-                intent.putExtra("projectID", selectedProjectID);
-
+                DBOPS.PackExtras(intent, studentID, selectedProjectID);
+                viewAdapter.clear();
                 this.startActivity(intent);
             } else {
                 Toast.makeText(this, "Select a project from the list to see details", Toast.LENGTH_LONG).show();
@@ -80,6 +93,7 @@ public class ProjectsActivity extends Activity implements View.OnClickListener {
         }
 
         if (id == R.id.btnGoBackProjectView) {
+            viewAdapter.clear();
             this.finish();
         }
 
@@ -90,17 +104,15 @@ public class ProjectsActivity extends Activity implements View.OnClickListener {
         listProjects = new ArrayList<String>();
 
 
-        arrayProjects = DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECTS, "Title", new String[] {studentID});
-        arrayProjectID = DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECTS, "_id", new String[] {studentID});
-
-        System.out.println("LEngth: " + arrayProjects.length);
+        arrayProjects = DBOPS.getAttributeCol(SQLCommand._08_GET_PROJECTS, "Title", new String[] {studentID});
+        arrayProjectID = DBOPS.getAttributeCol(SQLCommand._08_GET_PROJECTS, "_id", new String[] {studentID});
 
         for (String prj : arrayProjects)
             listProjects.add(prj);
 
-        ArrayAdapter<String> projectAdapter = new ArrayAdapter<String>(this, R.layout.layout_listview_item, listProjects);
+        viewAdapter = new ArrayAdapter<String>(this, R.layout.layout_listview_item, listProjects);
 
-        listView.setAdapter(projectAdapter);
+        listView.setAdapter(viewAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setSelector(android.R.color.darker_gray);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

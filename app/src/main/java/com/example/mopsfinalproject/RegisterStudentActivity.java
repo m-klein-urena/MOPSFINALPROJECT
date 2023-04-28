@@ -14,11 +14,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
-public class RegisterActivity extends Activity implements OnClickListener{
+public class RegisterStudentActivity extends Activity implements OnClickListener{
 
     Button btnFinish;
     Toolbar toolbar;
@@ -66,95 +65,9 @@ public class RegisterActivity extends Activity implements OnClickListener{
 
         spinnerState.setSelection(21);
 
-        spinnerPronoun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Select Pronouns")){
-                }else {
-//                    String item = parent.getItemAtPosition(position).toString();
-//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-
-        });
-
-        spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Select State")){
-                }else {
-//                    String item = parent.getItemAtPosition(position).toString();
-//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerSchool.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Select School")){
-                }else {
-//                    String item = parent.getItemAtPosition(position).toString();
-//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerSkill1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Select Skill")){
-                }else {
-//                    String item = parent.getItemAtPosition(position).toString();
-//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerSkill2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Select Skill")){
-                }else {
-//                    String item = parent.getItemAtPosition(position).toString();
-//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        spinnerSkill3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Select Skill")){
-                }else {
-//                    String item = parent.getItemAtPosition(position).toString();
-//                    Toast.makeText(parent.getContext(),"Selected: " +item, Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
 //        Call up toolbar and menu
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
-        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_home);
-        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_register);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_register, "ukn");
     }
 
     public void onClick(View v){
@@ -166,7 +79,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
                 studentID = CommitToDatabase();
 
                 Intent intent = new Intent(this, ProfileHomeActivity.class);
-                intent.putExtra("studentID", studentID);
+                DBOPS.PackExtras(intent, studentID, "ukn");
 
                 this.startActivity(intent);
             }

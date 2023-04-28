@@ -9,8 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
-import com.example.mopsfinalproject.constant.SQLCommand;
+import com.example.mopsfinalproject.custom.Menu;
+import com.example.mopsfinalproject.custom.SQLCommand;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.ArrayList;
@@ -23,12 +25,13 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
     Map<String, String> projectData;
     private TextView header;
     private String selectedStudentID;
-    String projectID;
+    String projectID, studentID;
     Button btnBack, btnDetails;
     TextView viewSkills, labelSkills;
     String[] arrayStudentsFirst, arrayStudentsLast;
     String[] arrayStudentID;
     List<String> listMatches;
+    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,13 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
         setContentView(R.layout.activity_matches);
 
         Bundle extras = getIntent().getExtras();
-        projectID = extras.getString("projectID");
-        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLCommand._00_GET_PROJECT_DATA, new String[] {projectID});
+        String[] data = extras.getString("student_prjID").split("\\$");
+
+        studentID = data[0];
+        projectID = data[1];
+
+
+        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLCommand._10_GET_PROJECT_DATA, new String[] {projectID});
 
         btnBack = (Button) findViewById(R.id.btnGoBackMatchView);
         btnBack.setOnClickListener(this);
@@ -52,6 +60,11 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
         header = (TextView) findViewById(R.id.queryHeaderMatches);
         header.setText("Matches for " + projectData.get("proj_title"));
 
+        //        Call up toolbar and menu
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_main, studentID);
+
+
         init();
     }
 
@@ -65,7 +78,7 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
         if (id == R.id.btnDetailsMatches) {
             if (btnDetails.isEnabled()) {
                 Intent intent = new Intent(this, DataProfileActivity.class);
-                intent.putExtra("studentID", selectedStudentID);
+                DBOPS.PackExtras(intent, selectedStudentID, "ukn");
                 this.startActivity(intent);
             }
         }
@@ -76,9 +89,9 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
         listMatches = new ArrayList<String>();
         String[] args = new String[] {projectID};
 
-        arrayStudentsFirst = DBOPS.getAttributeCol(SQLCommand._00_GET_STUDENT_MATCHES, "_first", args);
-        arrayStudentsLast = DBOPS.getAttributeCol(SQLCommand._00_GET_STUDENT_MATCHES, "_last", args);
-        arrayStudentID = DBOPS.getAttributeCol(SQLCommand._00_GET_STUDENT_MATCHES, "_id", args);
+        arrayStudentsFirst = DBOPS.getAttributeCol(SQLCommand._18_GET_STUDENT_MATCHES, "_first", args);
+        arrayStudentsLast = DBOPS.getAttributeCol(SQLCommand._18_GET_STUDENT_MATCHES, "_last", args);
+        arrayStudentID = DBOPS.getAttributeCol(SQLCommand._18_GET_STUDENT_MATCHES, "_id", args);
 
         for (int i = 0; i < arrayStudentsFirst.length; i++) {
             listMatches.add(arrayStudentsFirst[i] + " " + arrayStudentsLast[i]);
@@ -99,7 +112,7 @@ public class MatchStudentActivity extends Activity implements View.OnClickListen
     }
 
     private void init() {
-        String skills = DBOPS.ArrayToString(DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECT_SKILLS, "_skillname", new String[] {projectID}));
+        String skills = DBOPS.ArrayToString(DBOPS.getAttributeCol(SQLCommand._14_GET_PROJECT_SKILLS, "_skillname", new String[] {projectID}));
         System.out.println("SKILLS: " + skills);
 
 

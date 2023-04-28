@@ -27,6 +27,7 @@
     <string name="groupTeams">TEAMS</string>
 
 
+    <string name="headerNewProject">New Project</string>
     <string name="headerProfileDate">Your Data</string>
     <string name="hint">Select</string>
     <string name="home_instruction">Log in or sign up below.</string>
@@ -51,6 +52,13 @@
     <string name="inptPhone">Phone</string>
     <string name="inptSchool">Select School</string>
     <string name="inptSkill">Select Skill</string>
+
+    <string name="inptPrjTeam">New Team Name</string>
+    <string name="inptPrjName">Project Name</string>
+    <string name="inptPrjDesc">Description</string>
+    <string name="inptPrjAdvisor">Advisor Email</string>
+    <string name="inptPrjStart">Start Date</string>
+    <string name="inptPrjEnd">End Date</string>
 
 
     <string name="labelID">User ID:</string>
@@ -86,7 +94,7 @@
     <string name="matchesSkills">Your Skills:</string>
     <string name="matchesTeam">Team</string>
     <string name="matchesContact">Contact</string>
-    <string name="menuAbout">About</string>
+    <string name="menuProfile">Profile</string>
     <string name="menuSettings">Settings</string>
     <string name="menuLogout">Sign Out</string>
     <string name="menuHome">Home</string>

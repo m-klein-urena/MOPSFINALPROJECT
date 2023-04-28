@@ -1,11 +1,14 @@
 package com.example.mopsfinalproject;
 import com.example.mopsfinalproject.custom.DBOPS;
+import com.example.mopsfinalproject.custom.Menu;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.Map;
 
@@ -32,6 +35,7 @@ public class DataProfileActivity extends Activity implements View.OnClickListene
     TextView txtSkill3;
     Button btnBack;
     TextView header;
+    Toolbar toolbar;
 
 
 
@@ -41,7 +45,9 @@ public class DataProfileActivity extends Activity implements View.OnClickListene
         setContentView(R.layout.activity_data_user);
 
         Bundle extras = getIntent().getExtras();
-        userID = extras.getString("studentID");
+        String[] data = extras.getString("student_prjID").split("\\$");
+
+        userID = data[0];
 
         studentData = DBOPS.StudentToHashMap(userID);
 
@@ -52,6 +58,10 @@ public class DataProfileActivity extends Activity implements View.OnClickListene
 
         btnBack = (Button) findViewById(R.id.btnBackData);
         btnBack.setOnClickListener(this);
+
+        //        Call up toolbar and menu
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_main, userID);
 
     }
 

@@ -1,24 +1,20 @@
 package com.example.mopsfinalproject;
 
 import android.app.Activity;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 
-import com.example.mopsfinalproject.constant.SQLCommand;
+import com.example.mopsfinalproject.custom.Menu;
+import com.example.mopsfinalproject.custom.SQLCommand;
 import com.example.mopsfinalproject.custom.DBOPS;
-import com.example.mopsfinalproject.util.DBOperator;
-import com.example.mopsfinalproject.view.TableView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +31,7 @@ public class TeamsActivity extends Activity implements View.OnClickListener {
 
     String[] arrayTeams, arrayTeamID;
     String selectedTeamID;
+    Toolbar toolbar;
 
 
     @Override
@@ -43,7 +40,10 @@ public class TeamsActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_matches);
 
         Bundle extras = getIntent().getExtras();
-        studentID = extras.getString("studentID");
+        String[] data = extras.getString("student_prjID").split("\\$");
+
+        studentID = data[0];
+
         studentData = DBOPS.StudentToHashMap(studentID);
 
         btnDetails = (Button) findViewById(R.id.btnDetailsMatches);
@@ -57,6 +57,10 @@ public class TeamsActivity extends Activity implements View.OnClickListener {
 
         header = (TextView) findViewById(R.id.queryHeaderMatches);
         header.setText(studentData.get("stud_first_name") + "\'s Teams");
+
+        //        Call up toolbar and menu
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_main, studentID);
 
         initListView(studentID);
     }
@@ -77,8 +81,8 @@ public class TeamsActivity extends Activity implements View.OnClickListener {
         listTeams = new ArrayList<String>();
 
 
-        arrayTeams = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAMS, "_name", new String[] {studentID});
-        arrayTeamID = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAMS, "_id", new String[] {studentID});
+        arrayTeams = DBOPS.getAttributeCol(SQLCommand._09_GET_TEAMS, "_name", new String[] {studentID});
+        arrayTeamID = DBOPS.getAttributeCol(SQLCommand._09_GET_TEAMS, "_id", new String[] {studentID});
 
         for (String team : arrayTeams)
             listTeams.add(team);

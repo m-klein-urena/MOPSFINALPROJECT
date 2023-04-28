@@ -7,7 +7,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mopsfinalproject.constant.SQLCommand;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.mopsfinalproject.custom.Menu;
+import com.example.mopsfinalproject.custom.SQLCommand;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.Map;
@@ -20,6 +23,7 @@ public class DataMatchesProjectsActivity extends Activity implements View.OnClic
     TextView txtID, txtDesc, txtTeam, txtMembers, txtSkills, txtCreated, txtStart, txtEnd, txtAdvisor, txtHeader;
 
     Button btnBack, btnJoin;
+    Toolbar toolbar;
 
 
     @Override
@@ -33,7 +37,7 @@ public class DataMatchesProjectsActivity extends Activity implements View.OnClic
         studentID = data[0];
         projectID = data[1];
 
-        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLCommand._00_GET_PROJECT_DATA, new String[] {projectID});
+        projectData = DBOPS.AttributesToHashMap(DBOPS.projectAttributes(), SQLCommand._10_GET_PROJECT_DATA, new String[] {projectID});
 
         PopulateData();
 
@@ -45,6 +49,10 @@ public class DataMatchesProjectsActivity extends Activity implements View.OnClic
 
         btnJoin = (Button) findViewById(R.id.btnJoinProject);
         btnJoin.setOnClickListener(this);
+
+        //        Call up toolbar and menu
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_main, studentID);
 
     }
 
@@ -93,16 +101,16 @@ public class DataMatchesProjectsActivity extends Activity implements View.OnClic
         txtEnd.setText(projectData.get(attributes[5]));
         txtAdvisor.setText(projectData.get(attributes[6]));
 
-        String team = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAM, "_teamname", args)[0];
+        String team = DBOPS.getAttributeCol(SQLCommand._11_GET_TEAM, "_teamname", args)[0];
         txtTeam.setText(team);
 
-        String[] skillsarray = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAM_SKILLS_NEEDED, "_skillname", args);
+        String[] skillsarray = DBOPS.getAttributeCol(SQLCommand._13_GET_TEAM_SKILLS_NEEDED, "_skillname", args);
         String skills = DBOPS.ArrayToString(skillsarray);
 
         txtSkills.setText(skills);
 
-        String[] members_first = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAM_MEMBERS, "_first", args);
-        String[] members_last = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAM_MEMBERS, "_last", args);
+        String[] members_first = DBOPS.getAttributeCol(SQLCommand._12_GET_TEAM_MEMBERS, "_first", args);
+        String[] members_last = DBOPS.getAttributeCol(SQLCommand._12_GET_TEAM_MEMBERS, "_last", args);
 
         StringBuilder members = new StringBuilder();
         for (int i = 0; i < members_first.length; i++) {

@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.mopsfinalproject.constant.SQLCommand;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.mopsfinalproject.custom.Menu;
+import com.example.mopsfinalproject.custom.SQLCommand;
 import com.example.mopsfinalproject.custom.DBOPS;
 
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class MatchActivity extends Activity implements View.OnClickListener {
     String[] arrayProjects;
     String[] arrayProjectID;
     List<String> listMatches;
+    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,9 @@ public class MatchActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_matches);
 
         Bundle extras = getIntent().getExtras();
-        studentID = extras.getString("studentID");
+        String[] data = extras.getString("student_prjID").split("\\$");
+
+        studentID = data[0];
         studentData = DBOPS.StudentToHashMap(studentID);
 
         btnBack = (Button) findViewById(R.id.btnGoBackMatchView);
@@ -48,6 +54,10 @@ public class MatchActivity extends Activity implements View.OnClickListener {
 
         header = (TextView) findViewById(R.id.queryHeaderMatches);
         header.setText(studentData.get("stud_first_name") + "\'s Matches");
+
+        //        Call up toolbar and menu
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_main, studentID);
 
         init();
     }
@@ -62,8 +72,8 @@ public class MatchActivity extends Activity implements View.OnClickListener {
         if (id == R.id.btnDetailsMatches) {
             if (btnDetails.isEnabled()) {
                 Intent intent = new Intent(this, DataMatchesProjectsActivity.class);
-                String msg = studentID + "$" + selectedProjectID;
-                intent.putExtra("student_prjID", msg);
+                DBOPS.PackExtras(intent, "ukn", selectedProjectID);
+
                 this.startActivity(intent);
             }
         }
@@ -73,8 +83,8 @@ public class MatchActivity extends Activity implements View.OnClickListener {
         listView = (ListView) findViewById(R.id.listMatches);
         listMatches = new ArrayList<String>();
 
-        arrayProjects = DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECT_MATCHES, "Name", new String[] {studentID});
-        arrayProjectID = DBOPS.getAttributeCol(SQLCommand._00_GET_PROJECT_MATCHES, "_id", new String[] {studentID});
+        arrayProjects = DBOPS.getAttributeCol(SQLCommand._18_GET_PROJECT_MATCHES, "Name", new String[] {studentID});
+        arrayProjectID = DBOPS.getAttributeCol(SQLCommand._18_GET_PROJECT_MATCHES, "_id", new String[] {studentID});
 
         for (String prj : arrayProjects)
             listMatches.add(prj);

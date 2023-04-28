@@ -1,12 +1,19 @@
 package com.example.mopsfinalproject.custom;
 
+/**
+ * This custom class contains all the static methods used for database-related tasks in this app.
+ *
+ */
+
+
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mopsfinalproject.R;
-import com.example.mopsfinalproject.constant.SQLCommand;
 import com.example.mopsfinalproject.util.DBOperator;
 
 import java.text.DateFormat;
@@ -19,9 +26,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 public abstract class DBOPS {
+
+//    Generate a random n-length string ID with alphanumeric characters
     public static String GenerateID(int n) {
         StringBuilder buildID = new StringBuilder();
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -97,13 +105,21 @@ public abstract class DBOPS {
     public static void CommitStudentSkills(String studentID, String[] skills) {
         for (String skill : skills) {
             String[] args = new String[] {studentID, skill};
-            DBOperator.getInstance().execSQL(SQLCommand._01_INSERT_STUDENT_SKILLS, args);
+            DBOperator.getInstance().execSQL(SQLCommand._02_INSERT_STUDENT_SKILLS, args);
 
         }
     }
 
+    public static void CommitProjectSkills(String teamID, String[] skills) {
+        for (String skill : skills) {
+            String[] args = new String[] {teamID, skill};
+            DBOperator.getInstance().execSQL(SQLCommand._17_ADD_PROJECT_SKILLS, args);
+        }
+    }
+
+
     public static void CommitNewStudent (String[] args) {
-        DBOperator.getInstance().execSQL(SQLCommand._00_COMMIT_NEW_USER, args);
+        DBOperator.getInstance().execSQL(SQLCommand._01_COMMIT_NEW_USER, args);
 
     }
 
@@ -134,7 +150,7 @@ public abstract class DBOPS {
         String val;
 
         for (int i = 0; i < attributes.length; i++) {
-            Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._00_GET_STUDENT_DATA, new String[] {studentID});
+            Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._06_GET_STUDENT_DATA, new String[] {studentID});
 
             if (cursor.moveToFirst()) {
                 int idx = cursor.getColumnIndex(attributes[i]);
@@ -185,7 +201,7 @@ public abstract class DBOPS {
         String name;
         String [] args = new String[] {studentID};
 
-        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._01_GET_FIRST_NAME, args);
+        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._05_GET_FIRST_NAME, args);
 
         if (cursor.moveToFirst()) {
             int idx = cursor.getColumnIndex("stud_first_name");
@@ -197,32 +213,12 @@ public abstract class DBOPS {
         return "";
     }
 
-    public static String GetAttribute(String colLookup, String table, String colPK, String pk) {
-        String attr;
-
-        String query;
-
-        query = "SELECT " + colLookup + " FROM " + table + " WHERE " + colPK + " = " + pk;
-
-        Cursor cursor = DBOperator.getInstance().execQuery(query);
-
-        if (cursor.moveToFirst()) {
-            int idx = cursor.getColumnIndex("_attr");
-            attr = cursor.getString(idx);
-            cursor.close();
-
-            return attr;
-        }
-        cursor.close();
-
-        return "ukn";
-    }
 
     public static String[] getStudentSkills(String studentID) {
         String[] skills = new String[3];
 
 
-        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._00_GET_STUDENT_SKILLS, new String[] {studentID});
+        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand._07_GET_STUDENT_SKILLS, new String[] {studentID});
 
         cursor.moveToFirst();
         int i = 0;
@@ -300,17 +296,16 @@ public abstract class DBOPS {
     }
 
     public static void JoinProject(String studentID, String projectID) {
-        String teamID = DBOPS.getAttributeCol(SQLCommand._00_GET_TEAM, "_id", new String[] {projectID})[0];
+        String teamID = DBOPS.getAttributeCol(SQLCommand._11_GET_TEAM, "_id", new String[] {projectID})[0];
 
-        String [] argsJoinTeam = new String[] {projectID, studentID};
-        String[] argsJoinProject = new String[] {projectID, teamID};
+        String [] argsJoinTeam = new String[] {teamID, studentID};
 
-        DBOperator.getInstance().execSQL(SQLCommand._00_JOIN_TEAM, argsJoinTeam);
+        DBOperator.getInstance().execSQL(SQLCommand._15_JOIN_TEAM, argsJoinTeam);
         System.out.println("USER " + studentID + "SUCCESSFULLY JOINED TEAM " + teamID);
 
     }
     public static boolean isInProject(String userID, String projectID) {
-        List listProjects = Arrays.asList(getAttributeCol(SQLCommand._00_GET_PROJECTS, "_id", new String[] {userID}));
+        List listProjects = Arrays.asList(getAttributeCol(SQLCommand._08_GET_PROJECTS, "_id", new String[] {userID}));
 
         if (listProjects.contains(projectID)) {
             return true;
@@ -339,6 +334,38 @@ public abstract class DBOPS {
             Toast.makeText(context,"Please select distinct skills.", Toast.LENGTH_SHORT).show();
             return false;
         }
+        return true;
+    }
+
+    public static void PackExtras(Intent intent, String studentID, String projectID) {
+        StringBuilder msg = new StringBuilder();
+        msg.append(studentID);
+        msg.append("$");
+        msg.append(projectID);
+
+        intent.putExtra("student_prjID", msg.toString());
+    }
+
+    public static Boolean isValidDate(Context context, DatePicker start, DatePicker end) {
+        int yearStart = start.getYear();
+        int monthStart = start.getMonth();
+        int dayStart = start.getDayOfMonth();
+
+        int yearEnd = end.getYear();
+        int monthEnd = end.getMonth();
+        int dayEnd = end.getDayOfMonth();
+
+        Calendar calStart = Calendar.getInstance();
+        Calendar calEnd = Calendar.getInstance();
+
+        calStart.set(yearStart, monthStart, dayStart);
+        calEnd.set(yearEnd, monthEnd, dayEnd);
+
+        if (!calStart.before(calEnd)) {
+            Toast.makeText(context,"Project start date must be before end date.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 

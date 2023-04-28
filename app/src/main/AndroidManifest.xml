@@ -27,13 +27,7 @@
 
 
         <activity
-            android:name=".RegisterActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity
-            android:name=".RegisterActivity02"
+            android:name=".RegisterStudentActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -52,12 +46,6 @@
 
         <activity
             android:name=".ProjectsActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity
-            android:name=".ViewProjectListActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -88,6 +76,12 @@
 
         <activity
             android:name=".MatchStudentActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".RegisterProjectActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

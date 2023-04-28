@@ -39,9 +39,6 @@ public class HomeActivity extends Activity implements OnClickListener{
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(this);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
-        Menu.createMenu(getBaseContext(), toolbar, R.menu.menu_home);
-
     // End onCreate
     }
 
@@ -55,7 +52,7 @@ public class HomeActivity extends Activity implements OnClickListener{
 
             if (checkUser(login.getText().toString())) {
                 Intent intent = new Intent(this, ProfileHomeActivity.class);
-                intent.putExtra("studentID", login.getText().toString());
+                DBOPS.PackExtras(intent, login.getText().toString(), "ukn");
 
                 this.startActivity(intent);
             }   else {
@@ -64,7 +61,7 @@ public class HomeActivity extends Activity implements OnClickListener{
             }
 
         }else if(id==R.id.btnRegister){
-            Intent intent = new Intent(this, RegisterActivity.class);
+            Intent intent = new Intent(this, RegisterStudentActivity.class);
             this.startActivity(intent);
         }
     // End onClick
